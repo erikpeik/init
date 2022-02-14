@@ -1,1 +1,1 @@
-ifconfig -l
+networksetup -listallhardwareports | grep "Hardware Port:" | cut -c 16-
