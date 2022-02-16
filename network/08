@@ -1,1 +1,1 @@
-whois who.int
+whois $(host who.int | grep address | cut -d " " -f 4) | grep "OrgName:" | tr -s " " | cut -d " " -f 2-
