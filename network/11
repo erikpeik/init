@@ -1,0 +1,4 @@
+ 2  nat (10.60.1.1)
+
+ Network address translation
+ - Translating a private IP to public IP that can be read on the internet
