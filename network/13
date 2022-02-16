@@ -1,0 +1,3 @@
+4.1.12.10.in-addr.arpa domain name pointer c2r1p4.hive.fi.
+
+# host $(ipconfig getifaddr en0)
