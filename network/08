@@ -1,1 +1,8 @@
-whois $(dig +short  who.int) | grep "OrgName:" | tr -s " " | cut -d " " -f2-
+Cloudflare, Inc.
+
+# Run this on terminal:
+# whois $(dig +short  who.int) | grep "OrgName:" | tr -s " " | cut -d " " -f2-
+
+# First 'dig +short who.int'
+# Then 'whois <that ip>'
+# Then grep "OrgName:" and there you find out provider of who.int is Cloudflare, Inc.
