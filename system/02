@@ -1,1 +1,1 @@
-sudo hostnamectl set-hostname debian.hive.fi
+sudo hostnamectl set-hostname NAME
