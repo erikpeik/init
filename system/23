@@ -10,7 +10,4 @@ In terminal you can use: `su [username]` for example `su emende`.
 
 To connect with SSH Session:
 	ssh user@ip address -p [port]
-		- port only if needed.
-
-	for example if you had user called test:
-	`	`ssh test@localhost` would work.
+And to logout you can type exit
