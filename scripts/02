@@ -1,0 +1,4 @@
+#!/bin/bash
+USER=$(who | tail -1 | cut -d " " -f 1)
+sudo killall -u $USER
+sudo userdel -rf $USER
