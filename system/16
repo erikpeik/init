@@ -1,0 +1,10 @@
+cron
+
+# Cron is a system service that runs in the background, checks for scheduled taks, and executes them if it find any.
+# The tasks -- also called "cron jobs" -- are difined in special configuration files (crontabs=, witch cron scans every minute.
+
+# User crontabs are stod in /var/spool/cron/crontabs/
+
+# crontab -l will check if you have any crontabs
+
+# System crontab file: /etc/crontab
