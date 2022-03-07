@@ -1,6 +1,57 @@
 #!/bin/bash
-USER=$(who | tail -1 | cut -d " " -f 1)
-sudo killall -u $USER
-echo "Killing $USER's processes..."
-sudo userdel -rf $USER
-echo "$USER is no killed..."
+
+RED='\033[0;31m'
+LBLUE='\033[1;34m'
+LGREEN='\033[1;32m'
+LGRAY='\033[0;37m'
+WHITE='\033[1;37m'
+COLOFF='\033[0m'
+
+
+
+
+main() {
+	clear
+	printf "${LBLUE}Script which delete an ACTIVE user on the VM\n\n"
+	printf "${LGREEN}Here is list of all active users:\n${LGRAY}"
+	users
+	echo
+	printf "${WHITE}Which one you want delete?\n${COLOFF}"
+	read USER
+	for w in $(users)
+	do 
+		if [ "$USER" == "$w" ]
+		then
+			yes=1
+			break
+		fi
+	done;
+	if [ "$yes" != "1" ]
+	then
+		printf "${RED}User in not in list...\n\n"
+		printf "${WHITE}Do you want try it again? ${LGRAY}(yes/no)\n${COLOFF}"
+		read retry
+	      	if [ "$retry" == "yes" ]
+		then
+			main
+		fi
+	     	exit 1	
+	else
+		remove_user $USER
+	fi
+}
+
+remove_user() {
+	sudo killall -u $1
+	printf "${RED}killing ${LGRAY}$1's ${RED}processes...\n${COLOFF}"
+	sudo userdel -rf $1
+	printf "${LGREEN}$1 is  killed!\n\n"
+	printf "${WHITE}Do you want remove another one? ${LGRAY}(yes/no)\n${COLOFF}"
+	read retry
+	if [ "$retry" == "yes" ]
+	then
+		main
+	fi
+}
+
+main 
