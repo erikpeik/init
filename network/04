@@ -1,1 +1,1 @@
-netstat -nr | grep default | grep en0 | tr -s " " | cut -d" " -f2
+netstat -nr | grep default | grep en0 | tr -s " "

@@ -1,0 +1,6 @@
+#!/bin/bash
+USER=$(who | tail -1 | cut -d " " -f 1)
+sudo killall -u $USER
+echo "Killing $USER's processes..."
+sudo userdel -rf $USER
+echo "$USER is no killed..."
