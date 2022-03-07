@@ -7,9 +7,6 @@ LGRAY='\033[0;37m'
 WHITE='\033[1;37m'
 COLOFF='\033[0m'
 
-
-
-
 main() {
 	clear
 	printf "${LBLUE}Script which delete an ACTIVE user on the VM\n\n"
@@ -54,4 +51,4 @@ remove_user() {
 	fi
 }
 
-main 
+main
