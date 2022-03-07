@@ -1,1 +1,1 @@
-pkill ssh
+sudo service ssh stop
