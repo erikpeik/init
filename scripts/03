@@ -1,0 +1,49 @@
+#!/bin/bash
+
+RED='\033[0;31m'
+LGREEN='\033[1;32m'
+WHITE='\033[1;37m'
+LGRAY='\033[0;37m'
+DGRAY='\033[1;30m'
+COLOFF='\033[0m'
+
+main() {
+	printf "\t${LGREEN}- Countdown Timer -\n\n"
+	printf "${WHITE}How many hours? ${DGRAY}(h)${COLOFF}\n"
+	read hours
+	printf "${WHITE}How many minutes? ${DGRAY}(min)${COLOFF}\n"
+	read minutes
+	printf "${WHITE}How many seconds? ${DGRAY}(s)${COLOFF}\n"
+	read seconds
+	printf "\n${RED}Format is: ${WHITE}hh:mm:ss${COLOFF}\n\n"
+	loop
+}
+
+loop() {
+	while [ $hours -ge 0 ]; do 
+		while [ $minutes -ge 0 ]; do
+			while [ $seconds -ge 0 ]; do
+				printf  "\t   ${LGRAY}%02d:%02d:%02d\033[0K\r" $hours $minutes $seconds
+				let "seconds=seconds-1"
+				sleep 1
+			done
+			seconds=59
+			let "minutes=minutes-1"
+		done
+		minutes=59
+		let "hours=hours-1"
+	done
+	printf "Timer run out of time...\n"
+	bell
+}
+
+bell() {
+	echo -ne '\007'
+	sleep 1
+	echo -ne '\007'
+	sleep 1
+	echo -ne '\007'
+	sleep 1
+}
+
+main
