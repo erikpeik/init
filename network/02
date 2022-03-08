@@ -1,3 +1,6 @@
-ifconfig en0 | grep broadcast | cut -d" " -f6
-ping -t 2 $(ifconfig en0 | grep "broadcast" | cut -d ' ' -f 6) > /dev/null 2>&1
-arp -a | cut -d"(" -f2 | cut -d")" -f1
+ifconfig en0 | grep broadcast | cut -d" " -f6 # 2a
+
+ping -c 1 $(ifconfig en0 | grep "broadcast" | cut -d ' ' -f 6) > /dev/null 2>&1
+
+SUBNET=$(sed -e 's/.255//g' << $(ifconfig en0 | grep broadcast | cut -d ' ' -f 6))
+arp -a | cut -d "(" -f 2 | cut -d ")" -f 1 | grep "$SUBNET"
