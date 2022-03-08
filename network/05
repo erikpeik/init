@@ -1,1 +1,1 @@
-host who.int | grep address | cut -d" " -f4
+nslookup who.int
